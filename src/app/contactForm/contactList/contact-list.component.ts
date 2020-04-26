@@ -32,8 +32,9 @@ export class ContactListComponent implements OnInit, OnDestroy {
     // setting up dtOption
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 4,
-      responsive: true
+      pageLength: 5,
+      responsive: true,
+      lengthMenu: [5, 10, 20, 50,100],
     };
     this.getContactList();
   }
@@ -92,7 +93,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
       console.log(error);
       this.spinner.hide();
       this.deleteModal.hideModal();
-      this.alertService.danger('Something went wrong');
+      this.alertService.danger('Something went wrong,Please try again later.');
     });
 
   }
@@ -125,5 +126,10 @@ export class ContactListComponent implements OnInit, OnDestroy {
     }, error => {
       console.log(error);
     });
+  }
+  cancelEDIT(e){
+    this.testModal.hideModal();
+    return;
+
   }
 }

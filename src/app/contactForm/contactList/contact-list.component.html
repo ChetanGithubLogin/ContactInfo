@@ -39,7 +39,7 @@
 </div>
 <app-modal #testModal [title]="title">
   <div class="modal-body">
-    <app-update-form [dataToModify]="datatoSend" (hideMod)="hideEditModal($event)"></app-update-form>
+    <app-update-form [dataToModify]="datatoSend" (hideMod)="hideEditModal($event)" (cancelMod)="cancelEDIT($event)"></app-update-form>
   </div>
 </app-modal>
 <app-modal #deleteModal [title]="title">

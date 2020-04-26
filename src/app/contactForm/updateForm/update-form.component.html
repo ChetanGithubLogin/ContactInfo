@@ -42,8 +42,8 @@
     <label class="custom-control-label" for="customControlInline">Active</label>
   </div>
             <div class="text-center">
-                <button class="btn btn-primary mr-1" [disabled]="!editcontactForm.valid">Update</button>
-                <button class="btn btn-secondary"  (click)="onCancel()">Cancel</button>
+                <button class="btn btn-primary mr-1" type="submit" [disabled]="!editcontactForm.valid">Update</button>
+                <button class="btn btn-secondary" type="button" (click)="onCancel()">Cancel</button>
             </div>
         </form>
     </div>

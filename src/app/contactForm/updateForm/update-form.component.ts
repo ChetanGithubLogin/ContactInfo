@@ -13,6 +13,8 @@ export class UpdateFormComponent implements OnInit, OnChanges {
 
   @Input() dataToModify = null;
   @Output() hideMod = new EventEmitter();
+  @Output() cancelMod = new EventEmitter();
+  
   editcontactForm: FormGroup;
   submitted = false;
   constructor(private fb: FormBuilder,
@@ -33,6 +35,7 @@ export class UpdateFormComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
   formInit() {
+    if(this.dataToModify){
     this.editcontactForm.patchValue({
         firstName: this.dataToModify.firstName,
         lastName: this.dataToModify.lastName,
@@ -41,6 +44,7 @@ export class UpdateFormComponent implements OnInit, OnChanges {
         status: this.dataToModify.status,
         phone: this.dataToModify.phoneNumber
     });
+  }
   }
   get f() { return this.editcontactForm.controls; }
   get isEmailMismatch() { return this.editcontactForm.getError('emailMismatch'); }
@@ -78,15 +82,19 @@ export class UpdateFormComponent implements OnInit, OnChanges {
     onCancel() {
         this.submitted = false;
         this.editcontactForm.patchValue({
-          firstName: this.dataToModify.firstName,
-          lastName: this.dataToModify.lastName,
-          email: this.dataToModify.emailAddress,
-          status: this.dataToModify.status,
-          phone: this.dataToModify.phoneNumber
+          firstName: this.dataToModify.firstName ? this.dataToModify.firstName : '',
+          lastName: this.dataToModify.lastName ? this.dataToModify.lastName : '',
+          email: this.dataToModify.emailAddress ? this.dataToModify.emailAddress : '',
+          status: this.dataToModify.status ? this.dataToModify.status : false,
+          phone: this.dataToModify.phoneNumber ? this.dataToModify.phoneNumber : ''
       });
+        this.cancelClikEventEmmiter();
     }
     editModal(){
       this.hideMod.emit(true);
+    }
+    cancelClikEventEmmiter(){
+      this.cancelMod.emit(true);
     }
 
 }
