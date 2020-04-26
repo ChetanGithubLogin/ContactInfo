@@ -1,0 +1,55 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-scale-ripple-multiple" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+<ngx-alerts></ngx-alerts>
+<div class="">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-12">
+            <div class="card">
+              <h5 class="card-header">Contact List</h5>
+                <div class="card-body">
+                  <table datatable [dtOptions]="dtOptions" style="width:100%" [dtTrigger]="dtTrigger" class="table table-bordered">
+                    <thead>
+                      <tr>                      
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let person of persons">                       
+                        <td>{{ person.firstName }}</td>
+                        <td>{{ person.lastName }}</td>
+                        <td>{{ person.phoneNumber }}</td>
+                        <td>{{ person.emailAddress }}</td>
+                        <td>{{ person.status ? 'Active':'Inactive' }}</td>
+                        <td><button (click)="editRow(person)"  id="btnedit"class="btn btn-sm btn-success" tooltip="Edit"
+                          placement="right"><i class="fas fa-edit"></i></button>
+                          <button (click)="deleteRow(person.id)" class="btn btn-sm btn-danger ml-4" tooltip="Delete"
+                          placement="right"><i class="fa fa-trash"></i></button></td>
+
+                      </tr>
+                    </tbody>                 
+                    </table>
+                </div>
+              </div>
+        </div>   
+    </div> 
+</div>
+<app-modal #testModal [title]="title">
+  <div class="modal-body">
+    <app-update-form [dataToModify]="datatoSend" (hideMod)="hideEditModal($event)"></app-update-form>
+  </div>
+</app-modal>
+<app-modal #deleteModal [title]="title">
+  <div class="modal-body">
+    <div>
+      <span>Do you want to delete?</span>
+      <div class="text-center">
+        <button class="btn btn-primary mr-1" (click)="yesClick($event)">Yes</button>
+        <button class="btn btn-secondary"(click)="noClick()">No</button>
+    </div>
+    </div>
+  </div>
+</app-modal>

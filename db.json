@@ -1,0 +1,20 @@
+{
+  "people": [
+    {
+      "firstName": "Test",
+      "lastName": "Test",
+      "phoneNumber": "(123) 456-7889",
+      "emailAddress": "Test@gmail.com",
+      "status": false,
+      "id": 1.1850652130876773
+    },
+    {
+      "firstName": "test",
+      "lastName": "yyy",
+      "phoneNumber": "(123) 456-7888",
+      "emailAddress": "c@gmail.com",
+      "status": false,
+      "id": 1.998540366236633
+    }
+  ]
+}
