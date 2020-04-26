@@ -132,4 +132,4 @@ export class ContactListComponent implements OnInit, OnDestroy {
     return;
 
   }
-}
+} 
